@@ -1,5 +1,6 @@
 import csv
 import numpy as np
+from matplotlib import pyplot as plt
 # Open the CSV file
 with open('Salary_Data.csv', mode='r', newline='') as file:
     # Create a CSV reader object
@@ -38,6 +39,20 @@ S_X=sum(S_X)
 m=S/S_X
 
 b=Y_m-(m*X_m)
+print(b)
+slope=[]
+Var=[]
+for x in range(13,20):
+    Var.append(x)
+    slope.append(m*x+b)
 
-Y=m*13+b
-print(Y)
+# 4. Plot the linear regression line
+plt.plot(Var,slope, color='red', label=f'Regression Line: y = {m:.2f}x + {b:.2f}')
+
+# Add labels, title, and legend for clarity
+plt.xlabel('X-axis')
+plt.ylabel('Y-axis')
+plt.title('Linear Regression Plot')
+plt.legend()
+plt.grid(True)
+plt.show()
